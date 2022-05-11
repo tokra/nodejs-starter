@@ -44,7 +44,7 @@ const onError = (error) => {
 	server.on('error', onError);
 	try {
 		// a client can be shared by different commands.
-		const client = new HealthClient({ region: 'REGION' });
+		const client = new HealthClient({ region: 'eu-central-1' });
 		const params = {
 			/** input parameters */
 		};

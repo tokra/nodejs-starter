@@ -1,5 +1,5 @@
 {
-	"name": "Tokra NodeJS starter kit",
+	"name": "nodejs-starter",
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
@@ -14,7 +14,7 @@
 		"format": "./node_modules/.bin/prettier --write '{app,config,lib,bin,routes,www}/**/*.js'",
 		"format:tests": "./node_modules/.bin/prettier --write 'test/**/*.js'",
 		"format:check": "./node_modules/.bin/prettier --check '{app,config,lib,bin,routes,tests,www}/**/*.js'",
-		"linter": "yarn format:check && yarn lint",
+		"linter": "npm run format:check && npm run lint",
 		"test": "./node_modules/.bin/jest --clear-cache && NODE_ENV=test node --expose-gc ./node_modules/.bin/jest --runInBand --logHeapUsage --detectOpenHandles --forceExit",
 		"test:win": "./node_modules/.bin/jest --clear-cache && NODE_ENV=test node --expose-gc ./node_modules/jest/bin/jest --runInBand --logHeapUsage --detectOpenHandles --forceExit",
 		"integration:dev": "./node_modules/.bin/cucumber-js -f ./node_modules/@cucumber/pretty-formatter ./test/cucumber/features --tags @debug",

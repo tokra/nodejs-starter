@@ -17,5 +17,20 @@
 	},
 	"[js]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[css]": {
+		"editor.defaultFormatter": "ecmel.vscode-html-css"
+	},
+	"[html]": {
+		"editor.defaultFormatter": "ecmel.vscode-html-css"
+	},
+	"[xml]": {
+		"editor.defaultFormatter": "ecmel.vscode-html-css"
+	},
+	"[yaml]": {
+		"editor.defaultFormatter": "redhat.vscode-yaml"
+	},
+	"[yml]": {
+		"editor.defaultFormatter": "redhat.vscode-yaml"
 	}
 }

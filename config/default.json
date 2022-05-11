@@ -1,0 +1,82 @@
+{
+	"env": {
+		"NEW_RELIC_DISTRIBUTED_TRACING_ENABLED": false
+	},
+	"http": {
+		"port": 8080,
+		"hostname": "localhost"
+	},
+	"cluster": {
+		"workersCount": 4,
+		"enabled": true
+	},
+	"express": {
+		"routes": {
+			"path": {
+				"v1": "/api/v1"
+			}
+		},
+		"jsonpOptions": {
+			"contentDisposition": ["attachment; filename=test.txt"],
+			"contentType": "text/javascript; charset=utf-8"
+		},
+		"request": {
+			"sizeLimit": "1mb"
+		},
+		"ping": {
+			"statusMessage": "OK"
+		}
+	},
+	"fetch": {
+		"userAgent": "NodePlayGround"
+	},
+	"corsOptions": {
+		"origin": "*",
+		"optionsSuccessStatus": 200,
+		"methods": ["GET", "POST", "OPTIONS"],
+		"allowedHeaders": ["Origin", "X-Requested-With", "Content-Type", "Accept", "Cache-Control"]
+	},
+	"logging": {
+		"level": "debug",
+		"dir": "./logs",
+		"logentriesToken": "",
+		"logentriesEnabled": "",
+		"geoRegion": "",
+		"categories": {
+			"app": ["Console"],
+			"api": ["Console"],
+			"test:integration": ["Console"],
+			"performance": ["Console"]
+		},
+		"trace": {
+			"region": true,
+			"origin": true,
+			"referer": true,
+			"remoteClientIP": true,
+			"userAgent": true,
+			"enabledTokens": "hostname,geoRegion,reqMethod,respStatus,respTime,contentLength,reqOrigin,reqReferrer,reqIp,reqUa,reqId,reqUrl,appId",
+			"tokensFormat": "${name}[${value}]"
+		},
+		"akamaiLoggingEnabled": ""
+	},
+	"components": {},
+	"cucumber": {
+		"defaultTimeout": 5000
+	},
+	"tests": {
+		"jestTimeout": 5000
+	},
+	"swagger": {
+		"openapiCssPath": "../../pages/swagger/css",
+		"openapiImgPath": "../../pages/swagger/img",
+		"v1": {
+			"uiPath": "/api/v1/docs",
+			"assetPath": "/api/v1/",
+			"openapiYamlPath": "../../pages/swagger/openapiV1.yaml"
+		}
+	},
+	"rateLimit": {
+		"windowMs": 60000,
+		"maxQuery": 2500
+	}
+}

@@ -1,0 +1,41 @@
+#!/usr/bin/env node
+const config = require('config');
+const _ = require('lodash');
+const app = require('../app/app');
+const logger = require('../lib/logger').getLogger('app');
+
+const port = _.isEmpty(process.env.PORT) ? config.get('http.port') : process.env.PORT;
+
+const onListening = (srvport = port) => {
+	logger.info(`Server is listening on port ${srvport}`);
+};
+
+const onClose = () => {
+	logger.info('Server has been stopped !');
+};
+
+const onError = (error) => {
+	if (!_.isEqual(error.syscal, 'listen')) {
+		throw error;
+	}
+
+	const bind = _.isString(port) ? `Pipe ${port}` : `Port ${port}`;
+
+	switch (error.code) {
+		case 'EACCES':
+			logger.error(`${bind} requires elevated privileges`);
+			process.exit(1);
+			break; // no-fallthrough
+		case 'EADDRINUSE':
+			logger.error(`${bind} is already in use`);
+			process.exit(1);
+			break; // no-fallthrough
+		default:
+			throw error;
+	}
+};
+
+app.set('port', port);
+const server = app.listen(port, onListening(port));
+server.on('close', onClose);
+server.on('error', onError);

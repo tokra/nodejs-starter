@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const config = require('config');
 const _ = require('lodash');
+const { HealthClient, DescribeAffectedAccountsForOrganizationCommand } = require('@aws-sdk/client-health');
 const app = require('../app/app');
 const logger = require('../lib/logger').getLogger('app');
 
@@ -35,7 +36,29 @@ const onError = (error) => {
 	}
 };
 
-app.set('port', port);
-const server = app.listen(port, onListening(port));
-server.on('close', onClose);
-server.on('error', onError);
+/* eslint-disable func-names */
+(async function () {
+	app.set('port', port);
+	const server = app.listen(port, onListening(port));
+	server.on('close', onClose);
+	server.on('error', onError);
+	try {
+		// a client can be shared by different commands.
+		const client = new HealthClient({ region: 'REGION' });
+		const params = {
+			/** input parameters */
+		};
+		const command = new DescribeAffectedAccountsForOrganizationCommand(params);
+		await client.send(command);
+	} catch (error) {
+		const { requestId, cfId, extendedRequestId } = error.$metadata;
+		logger.error({ requestId, cfId, extendedRequestId });
+		/**
+		 * The keys within exceptions are also parsed.
+		 * You can access them by specifying exception names:
+		 * if (error.name === 'SomeServiceException') {
+		 *     const value = error.specialKeyInException;
+		 * }
+		 */
+	}
+})();

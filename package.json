@@ -29,6 +29,7 @@
 	},
 	"license": "Apache2.0",
 	"dependencies": {
+		"@aws-sdk/client-health": "^3.87.0",
 		"compression": "^1.7.4",
 		"config": "^3.0.1",
 		"cookie-parser": "~1.4.4",

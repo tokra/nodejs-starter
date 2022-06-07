@@ -43,10 +43,10 @@
 		"logentriesEnabled": "",
 		"geoRegion": "",
 		"categories": {
-			"app": ["Console"],
-			"api": ["Console"],
+			"app": ["Console", "File", "r7insight"],
+			"api": ["Console", "File", "r7insight"],
 			"test:integration": ["Console"],
-			"performance": ["Console"]
+			"performance": ["Console", "File", "r7insight"]
 		},
 		"trace": {
 			"region": true,

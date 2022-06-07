@@ -23,9 +23,9 @@
 		"npm:audit": "npm audit --json | npm-audit-html --output audit/report.html"
 	},
 	"engines": {
-		"npm": "^8.5.x",
-		"node": "^16.4.x",
-		"yarn": "^1.22.x"
+		"npm": "^8",
+		"node": "^16",
+		"yarn": "^1"
 	},
 	"license": "Apache2.0",
 	"dependencies": {
@@ -54,6 +54,7 @@
 		"pretty-bytes": "^5.6.0",
 		"pretty-ms": "^7.0.1",
 		"pug": "^3.0.2",
+		"r7insight_node": "^3.3.0",
 		"rewire": "^6.0.0",
 		"swagger-ui-express": "^4.1.6",
 		"uuid": "^3.3.2",
